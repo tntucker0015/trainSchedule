@@ -13,7 +13,7 @@ body {
 table, tr {
   border: 10px solid white;
   width: 100%;
-  color: grey;
+  color: yellow;
 }
 
 th, td {

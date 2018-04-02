@@ -16,26 +16,43 @@
       <tr>
         <th>Train Name</th>
         <th> Destination</th>
-        <th>frequency</th>
+        <th>Frequency</th>
         <th>Next Arrival Time</th>
         <th>Minutes Away</th>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><span id="newName"></span></td>
+        <td><span id="newDest"></span></td>
+        <td><span id="newFreq"></span></td>
+        <td><span id="newArrival"></span></td>
+        <td><span id="newMinAway"></span></td>
       </tr>
     </table>
-    <form id="newTrainForm">
-      <lable for="newTrain">ADD A NEW TRAIN</lable>
+    <form role="form">
+      <div class="form-group">
+        <br>
+      <lable for="newTrain"><h1>Add a New Train</h1></lable>
+      </div>
+      <div class="for-group">
+        <lable for="name-input">Train Name</lable>
+        <input id="name-input" type="text" class="form-control" name="name-input">
+      </div>
       <br />
-      <br />
-      <input id="trainName" type="text" name="newTrain"><br>
-      <input id="destination" type="text"><br>
-      <input id="frequency" type="text"><br>
-      <input id="firstArrivalTime" type="text"><br>
+      <div class="for-group">
+          <lable for="dest-input">Destination</lable>
+          <input id="dest-input" type="text" class="form-control" name="dest-input">
+        </div>
+        <br />
+        <div class="for-group">
+            <lable for="frequency-input">Frequency</lable>
+            <input id="frequency-input" type="number" class="form-control" name="frequency-input">
+          </div>
+          <br />
+          <div class="for-group">
+              <lable for="arrival-input">arrival Time</lable>
+              <input id="arrival-input" type="number" class="form-control" name="arrival-input">
+            </div>
+            <br />
       <input id="addTrain" type="submit" value="Add New Trian">
     </form>
   </div>
