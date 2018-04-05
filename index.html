@@ -6,32 +6,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Hogwarts Express Schedule</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
     <link rel=stylesheet type="text/css" href="assets/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
   <div class="container">
     <h1>Hogwarts Express</h1>
 
-    <table id="schedule"> 
-      <tr>
-        <th>Train Name</th>
-        <th> Destination</th>
-        <th>Frequency</th>
-        <th>Next Arrival Time</th>
-        <th>Minutes Away</th>
+    <table class="table"> 
+      <thead class="thead-dark">
+        <tr>
+        <th scope="col">Train Name</th>
+        <th scope="col"> Destination</th>
+        <th scope="col">Frequency</th>
+        <th scope="col">First Arrival Time</th>
+        <th scope="col">Minutes Away</th>
+        <th scope="col">Next Train Arrival</th>
       </tr>
-      <tr>
-        <td><span id="newName"></span></td>
-        <td><span id="newDest"></span></td>
-        <td><span id="newFreq"></span></td>
-        <td><span id="newArrival"></span></td>
-        <td><span id="newMinAway"></span></td>
-      </tr>
+      </thead>
+      <tbody id="tbody">
+
+      </tbody>
     </table>
     <form role="form">
       <div class="form-group">
         <br>
-      <lable for="newTrain"><h1>Add a New Train</h1></lable>
+      <lable for="newTrain"><h1>Add A New Train</h1></lable>
       </div>
       <div class="for-group">
         <lable for="name-input">Train Name</lable>
@@ -49,8 +50,8 @@
           </div>
           <br />
           <div class="for-group">
-              <lable for="arrival-input">arrival Time</lable>
-              <input id="arrival-input" type="number" class="form-control" name="arrival-input">
+              <lable for="firstArrival-input">First Arrival Time</lable>
+              <input id="firstArrival-input" type="number" class="form-control" name="firstArrival-input">
             </div>
             <br />
       <input id="addTrain" type="submit" value="Add New Trian">
