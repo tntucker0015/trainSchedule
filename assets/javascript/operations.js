@@ -1,6 +1,5 @@
 // to do:
-
-// pull timer into train log
+// change to reflect current minutes away
 // css bootstrap  
 // show input and output on different pages
 // add button to pull up input
@@ -21,6 +20,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var newName = "";
 var newDest = "";
+var nextTrain = [];
 var newArrival = 0;
 var newFreq = 0;
 var minAway = 0;
@@ -36,29 +36,35 @@ $("#addTrain").on("click", function (event) {
   var arrival = $("#firstArrival-input").val().trim();
   var firstTime = "00:00";
   var currentTime = moment();
-  console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
   var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
   var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
   var tRemainder = diffTime % frequency;
   var tMinutesTillTrain = frequency - tRemainder;
-  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
   var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-  console.log("ARRIVAL TIME: " + moment(nextTrain).format("h:mm"));
 
   // send data to firebase
   database.ref().push({
+    currentTime:  moment(currentTime).format("HH:mm"),
     newName: name,
     newDest: destination,
     newFreq: frequency,
     newArrival: arrival,
     newMinAway: tMinutesTillTrain,
-    newNextTrain: moment(nextTrain).format("h:mm"),
+    newNextTrain: moment(nextTrain).format("HH:mm"),
   });
 });
 
-database.ref().on("child_added", function (snapshot) {
+database.ref().on("child_added", function (childSnapshot) {
   // storing the snapshot.val() in a variable for convenience
-  var sv = snapshot.val();
+  var sv = childSnapshot.val();
+  conversion();
+  console.log("currentTime:" +  moment(this.currentTime).format("HH:mm"));
+  console.log(sv.newFreq);  
+  // pull newFreq
+  // calculate newArrival time
+  // calculate new minutes away from data pulled
+  // then append to tbody
+
   // prints the info from firebase onto the screen
   $('#tbody').append(
     `
@@ -71,4 +77,10 @@ database.ref().on("child_added", function (snapshot) {
     <td class="tableNextTrain">${sv.newNextTrain}</td>
     </tr>`
   );
+
+  function conversion() { 
+    var currentTime = moment();
+  };
+
+
 });
